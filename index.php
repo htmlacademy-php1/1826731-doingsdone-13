@@ -8,28 +8,45 @@ $tasks = [
         'date' => '01.12.2019',
         'category' => 'Работа',
         'status' => false
-    ], [
+    ], 
+    [
         'title' => 'Выполнить тестовое задание',
         'date' => '25.12.2019',
         'category' => 'Работа',
-        'status' => false],
-        ['title' => 'Сделать задание первого раздела',
-        'date'=>'21.12.2019',
-        'category'=>'Учеба',
-        'status'=>true],
-        ['title'=>'Встреча с другом',
-        'date'=>'22.12.2019',
-        'category'=>'	Входящие',
-        'status'=>false],
-        ['title'=>'Купить корм для кота',
-        'date'=>'null',
-        'category'=>'Домашние дела',
-        'status'=>false],
-        ['title'=>'Заказать пиццу',
-        'date'=>'null',
-        'category'=>'Домашние дела',
-        'status'=>false],
+        'status' => false
+    ],
+    [   'title' => 'Сделать задание первого раздела',
+        'date' => '21.12.2019',
+        'category' => 'Учеба',
+        'status' => true
+    ],
+    [   'title' => 'Встреча с другом',
+        'date' => '22.12.2019',
+        'category' => '	Входящие',
+        'status' => false
+    ],
+    [   'title' => 'Купить корм для кота',
+        'date' => 'null',
+        'category' => 'Домашние дела',
+        'status' => false
+    ],
+    [   'title' => 'Заказать пиццу',
+        'date' => 'null',
+        'category' => 'Домашние дела',
+        'status' => false
+    ],
 ];
+function task_count($task_array, $category )
+{
+    $count = 0;
+    foreach ($task_array as $task_item) {
+        if ($task_item['category'] === $category) {
+            $count++;
+        }
+    }
+    return $count;
+};
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -74,7 +91,7 @@ $tasks = [
                         <?php foreach ($categories as $category) : ?>
                             <li class="main-navigation__list-item">
                                 <a class="main-navigation__list-item-link" href="#"><?= $category; ?></a>
-                                <span class="main-navigation__list-item-count">0  </span>
+                                <span class="main-navigation__list-item-count"><?= task_count($tasks, $category)?></span>
                             </li>
                         <?php endforeach; ?>
                     </ul>

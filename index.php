@@ -1,5 +1,5 @@
 <?php
-// показывать или нет выполненные задачи
+include_once('function.php');
 $show_complete_tasks = rand(0, 1);
 $categories = ["Входящие", "Учеба", "Работа", "Домашние дела", "Авто"];
 $title = 'Дела в порядке';
@@ -12,7 +12,7 @@ $tasks = [
     ], 
     [
         'title' => 'Выполнить тестовое задание',
-        'date' => '25.12.2019',
+        'date' => '25.12.2021',                       
         'category' => 'Работа',
         'status' => false
     ],
@@ -37,33 +37,17 @@ $tasks = [
         'status' => false
     ],
 ];
-function task_count($task_array, $category )
-{
-    $count = 0;
-    foreach ($task_array as $task) {
-        if ($task['category'] === $category) {
-            $count++;
-        }
-    }
-    return $count;
-};
-function include_template($name, array $data = []) {
-    $name = 'templates/' . $name;
-    $result = '';
-
-    if (!is_readable($name)) {
-        return $result;
-    }
-
-    ob_start();
-    extract($data);
-    require $name;
-
-    $result = ob_get_clean();
-
-    return $result;
-};
-$page_content = include_template('main.php', ['categories' => $categories, 'tasks' => $tasks, 'show_complete_tasks' => $show_complete_tasks]); 
-$layout_content = include_template('layout.php', ['content' => $page_content, 'title' => $title]);
+//Основное содержимое страницы
+$page_content = include_template('main.php', [
+    'categories' => $categories, 
+    'tasks' => $tasks, 
+    'show_complete_tasks' => $show_complete_tasks
+]); 
+//Вся страница
+$layout_content = include_template('layout.php', [
+    'content' => $page_content,
+     'title' => $title
+    ]);
+//Вывод страницы
 print($layout_content);
 ?>

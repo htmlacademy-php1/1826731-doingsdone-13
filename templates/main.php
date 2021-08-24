@@ -41,7 +41,7 @@
                 <table class="tasks">
                     <?php foreach ($tasks as $task) : ?>
                         <?php if (!$show_complete_tasks && $task['status']==true) {continue;} ?>
-                            <tr class="tasks__item task <?php if ($task['status']) {echo "task--completed";} ?>">
+                            <tr class="tasks__item task <?php if (diff_btw_dates($task['date']) >= 24): ?> task--important<?php endif; ?> <?php if ($task['status']) {echo "task--completed";} ?>">
                                 <td class="task__select">
                                     <label class="checkbox task__checkbox">
                                         <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">

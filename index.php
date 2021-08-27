@@ -12,7 +12,7 @@ $tasks = [
     ], 
     [
         'title' => 'Выполнить тестовое задание',
-        'date' => '25.12.2021',                       
+        'date' => '25.12.2021',                          // Изменил дату для проверки функции diff_btw_date
         'category' => 'Работа',
         'status' => false
     ],
@@ -50,4 +50,3 @@ $layout_content = include_template('layout.php', [
     ]);
 //Вывод страницы
 print($layout_content);
-?>

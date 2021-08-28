@@ -1,5 +1,5 @@
 <?php
-include_once('function.php');
+include_once('functions/function.php');
 $show_complete_tasks = rand(0, 1);
 $categories = ["Входящие", "Учеба", "Работа", "Домашние дела", "Авто"];
 $title = 'Дела в порядке';
@@ -51,3 +51,4 @@ $layout_content = include_template('layout.php', [
 //Вывод страницы
 print($layout_content);
 ?>
+f
